@@ -1,0 +1,9 @@
+C:\Users\Admin\Desktop\ThucHanhSo1_LTM\Bai1\obj\Debug\Bai1.Form1.resources
+C:\Users\Admin\Desktop\ThucHanhSo1_LTM\Bai1\obj\Debug\Bai1.Properties.Resources.resources
+C:\Users\Admin\Desktop\ThucHanhSo1_LTM\Bai1\obj\Debug\Bai1.csproj.GenerateResource.cache
+C:\Users\Admin\Desktop\ThucHanhSo1_LTM\Bai1\obj\Debug\Bai1.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\ThucHanhSo1_LTM\Bai1\bin\Debug\Bai1.exe.config
+C:\Users\Admin\Desktop\ThucHanhSo1_LTM\Bai1\bin\Debug\Bai1.exe
+C:\Users\Admin\Desktop\ThucHanhSo1_LTM\Bai1\bin\Debug\Bai1.pdb
+C:\Users\Admin\Desktop\ThucHanhSo1_LTM\Bai1\obj\Debug\Bai1.exe
+C:\Users\Admin\Desktop\ThucHanhSo1_LTM\Bai1\obj\Debug\Bai1.pdb
