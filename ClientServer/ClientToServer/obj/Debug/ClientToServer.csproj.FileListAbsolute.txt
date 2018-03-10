@@ -1,0 +1,6 @@
+C:\Users\Admin\source\repos\ClientServer\ClientToServer\bin\Debug\ClientToServer.exe.config
+C:\Users\Admin\source\repos\ClientServer\ClientToServer\bin\Debug\ClientToServer.exe
+C:\Users\Admin\source\repos\ClientServer\ClientToServer\bin\Debug\ClientToServer.pdb
+C:\Users\Admin\source\repos\ClientServer\ClientToServer\obj\Debug\ClientToServer.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\ClientServer\ClientToServer\obj\Debug\ClientToServer.exe
+C:\Users\Admin\source\repos\ClientServer\ClientToServer\obj\Debug\ClientToServer.pdb
