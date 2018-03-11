@@ -11,6 +11,7 @@ namespace ServerClient
 {
     class Server
     {
+        bool checksothutu = false;
         string[] tenfile;
         Socket client;
         int input;
@@ -22,15 +23,18 @@ namespace ServerClient
                 LayTenFile();
                 XuatTenFile();
                 NhapFileChon();
-                Console.WriteLine("Client nao ket noi den may chu se nhan duoc file gui");
-                IPAddress[] ipAddress = Dns.GetHostAddresses("localhost");
-                IPEndPoint ipEnd = new IPEndPoint(ipAddress[0], 5656);
-                Socket sock = new Socket(ipAddress[0].AddressFamily, SocketType.Stream, ProtocolType.IP);
-                sock.Bind(ipEnd);
-                sock.Listen(100);
-                client = sock.Accept();
-                Console.WriteLine("Co client ket noi den!");
-                GuiFile();
+                if (checksothutu)
+                {
+                    Console.WriteLine("Client nao ket noi den may chu se nhan duoc file gui");
+                    IPAddress[] ipAddress = Dns.GetHostAddresses("localhost");
+                    IPEndPoint ipEnd = new IPEndPoint(ipAddress[0], 5656);
+                    Socket sock = new Socket(ipAddress[0].AddressFamily, SocketType.Stream, ProtocolType.IP);
+                    sock.Bind(ipEnd);
+                    sock.Listen(100);
+                    client = sock.Accept();
+                    Console.WriteLine("Co client ket noi den!");
+                    GuiFile();
+                }               
             }
             catch (Exception e)
             {
@@ -63,10 +67,14 @@ namespace ServerClient
             {
                 input = int.Parse(Console.ReadLine());
                 if (input < 0 || input > tenfile.Length)
-                {
+                {                    
                     Console.WriteLine("Khong co so thu tu nay ! de nghi nhap lai ");
                     return;
-                }                
+                } 
+                else
+                {
+                    checksothutu = true;
+                }
             }
             catch
             {
