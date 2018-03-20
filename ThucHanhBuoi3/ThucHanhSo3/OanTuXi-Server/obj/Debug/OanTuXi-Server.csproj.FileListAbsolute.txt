@@ -1,0 +1,7 @@
+C:\Users\Admin\Desktop\ThucHanhSo3\ThucHanhSo3\OanTuXi-Server\bin\Debug\OanTuXi-Server.exe.config
+C:\Users\Admin\Desktop\ThucHanhSo3\ThucHanhSo3\OanTuXi-Server\bin\Debug\OanTuXi-Server.exe
+C:\Users\Admin\Desktop\ThucHanhSo3\ThucHanhSo3\OanTuXi-Server\bin\Debug\OanTuXi-Server.pdb
+C:\Users\Admin\Desktop\ThucHanhSo3\ThucHanhSo3\OanTuXi-Server\obj\Debug\OanTuXi-Server.csprojResolveAssemblyReference.cache
+C:\Users\Admin\Desktop\ThucHanhSo3\ThucHanhSo3\OanTuXi-Server\obj\Debug\OanTuXi-Server.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\ThucHanhSo3\ThucHanhSo3\OanTuXi-Server\obj\Debug\OanTuXi-Server.exe
+C:\Users\Admin\Desktop\ThucHanhSo3\ThucHanhSo3\OanTuXi-Server\obj\Debug\OanTuXi-Server.pdb

@@ -1,0 +1,9 @@
+C:\Users\Admin\Desktop\ThucHanhSo3\ThucHanhSo3\OanTuXi-Client\bin\Debug\OanTuXi-Client.exe
+C:\Users\Admin\Desktop\ThucHanhSo3\ThucHanhSo3\OanTuXi-Client\bin\Debug\OanTuXi-Client.pdb
+C:\Users\Admin\Desktop\ThucHanhSo3\ThucHanhSo3\OanTuXi-Client\obj\x86\Debug\OanTuXi-Client.csprojResolveAssemblyReference.cache
+C:\Users\Admin\Desktop\ThucHanhSo3\ThucHanhSo3\OanTuXi-Client\obj\x86\Debug\OanTuXi_Client.Form1.resources
+C:\Users\Admin\Desktop\ThucHanhSo3\ThucHanhSo3\OanTuXi-Client\obj\x86\Debug\OanTuXi_Client.Properties.Resources.resources
+C:\Users\Admin\Desktop\ThucHanhSo3\ThucHanhSo3\OanTuXi-Client\obj\x86\Debug\OanTuXi-Client.csproj.GenerateResource.cache
+C:\Users\Admin\Desktop\ThucHanhSo3\ThucHanhSo3\OanTuXi-Client\obj\x86\Debug\OanTuXi-Client.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\ThucHanhSo3\ThucHanhSo3\OanTuXi-Client\obj\x86\Debug\OanTuXi-Client.exe
+C:\Users\Admin\Desktop\ThucHanhSo3\ThucHanhSo3\OanTuXi-Client\obj\x86\Debug\OanTuXi-Client.pdb

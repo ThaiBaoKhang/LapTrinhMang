@@ -1,0 +1,9 @@
+C:\Users\Admin\Desktop\ThucHanhSo3\ThucHanhSo3\OanTuXi\bin\Debug\OanTuXi.exe
+C:\Users\Admin\Desktop\ThucHanhSo3\ThucHanhSo3\OanTuXi\bin\Debug\OanTuXi.pdb
+C:\Users\Admin\Desktop\ThucHanhSo3\ThucHanhSo3\OanTuXi\obj\x86\Debug\OanTuXi.csprojResolveAssemblyReference.cache
+C:\Users\Admin\Desktop\ThucHanhSo3\ThucHanhSo3\OanTuXi\obj\x86\Debug\OanTuXi.Form1.resources
+C:\Users\Admin\Desktop\ThucHanhSo3\ThucHanhSo3\OanTuXi\obj\x86\Debug\OanTuXi.Properties.Resources.resources
+C:\Users\Admin\Desktop\ThucHanhSo3\ThucHanhSo3\OanTuXi\obj\x86\Debug\OanTuXi.csproj.GenerateResource.cache
+C:\Users\Admin\Desktop\ThucHanhSo3\ThucHanhSo3\OanTuXi\obj\x86\Debug\OanTuXi.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\ThucHanhSo3\ThucHanhSo3\OanTuXi\obj\x86\Debug\OanTuXi.exe
+C:\Users\Admin\Desktop\ThucHanhSo3\ThucHanhSo3\OanTuXi\obj\x86\Debug\OanTuXi.pdb
