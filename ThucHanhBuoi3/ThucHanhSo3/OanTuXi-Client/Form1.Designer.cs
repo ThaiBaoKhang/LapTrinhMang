@@ -36,14 +36,13 @@
             this.btnKeo = new System.Windows.Forms.Button();
             this.lblChon = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.lblTinhTrang = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblKetqua
             // 
             this.lblKetqua.AutoSize = true;
             this.lblKetqua.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblKetqua.Location = new System.Drawing.Point(86, 186);
+            this.lblKetqua.Location = new System.Drawing.Point(77, 186);
             this.lblKetqua.Name = "lblKetqua";
             this.lblKetqua.Size = new System.Drawing.Size(97, 24);
             this.lblKetqua.TabIndex = 13;
@@ -112,23 +111,11 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "Bạn chọn:";
             // 
-            // lblTinhTrang
-            // 
-            this.lblTinhTrang.AutoSize = true;
-            this.lblTinhTrang.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTinhTrang.Location = new System.Drawing.Point(196, 247);
-            this.lblTinhTrang.Name = "lblTinhTrang";
-            this.lblTinhTrang.Size = new System.Drawing.Size(107, 20);
-            this.lblTinhTrang.TabIndex = 14;
-            this.lblTinhTrang.Text = "lblTinhTrang";
-            this.lblTinhTrang.Visible = false;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(400, 284);
-            this.Controls.Add(this.lblTinhTrang);
+            this.ClientSize = new System.Drawing.Size(397, 248);
             this.Controls.Add(this.lblKetqua);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnBao);
@@ -138,6 +125,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Form1";
             this.Text = "Client";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -152,7 +140,6 @@
         private System.Windows.Forms.Button btnKeo;
         private System.Windows.Forms.Label lblChon;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lblTinhTrang;
     }
 }
 

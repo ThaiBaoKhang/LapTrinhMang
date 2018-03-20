@@ -22,37 +22,53 @@ namespace OanTuXi_Client
             InitializeComponent();
         }
         public void KetNoiServer()
-        {            
-            server = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-            ipep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 9050);
+        {
+            IPAddress[] ipAddress = Dns.GetHostAddresses("localhost");
+            server = new Socket(ipAddress[1].AddressFamily, SocketType.Dgram, ProtocolType.Udp);
+            ipep = new IPEndPoint(ipAddress[1], 9050);
             remote = (EndPoint)ipep;
         }
 
         private void btnKeo_Click(object sender, EventArgs e)
         {
+            lblChon.Visible = true;
             lblChon.Text = "Kéo";
             byte[] guithongtin = Encoding.ASCII.GetBytes("0");
             server.SendTo(guithongtin, remote);
             byte[] nhanthongtin = new byte[20];
-            lblKetqua.Text = Encoding.ASCII.GetString(nhanthongtin);
+            server.ReceiveFrom(nhanthongtin, ref remote);
+            lblKetqua.Visible = true;
+            lblKetqua.Text = Encoding.UTF8.GetString(nhanthongtin);            
+            
         }
 
         private void btnBua_Click(object sender, EventArgs e)
         {
+            lblChon.Visible = true;
             lblChon.Text = "Búa";
             byte[] guithongtin = Encoding.ASCII.GetBytes("1");
             server.SendTo(guithongtin, remote);
             byte[] nhanthongtin = new byte[20];
-            lblKetqua.Text = Encoding.ASCII.GetString(nhanthongtin);
+            server.ReceiveFrom(nhanthongtin, ref remote);
+            lblKetqua.Visible = true;
+            lblKetqua.Text  = Encoding.UTF8.GetString(nhanthongtin);        
         }
 
         private void btnBao_Click(object sender, EventArgs e)
         {
+            lblChon.Visible = true;
             lblChon.Text = "Bao";
             byte[] guithongtin = Encoding.ASCII.GetBytes("2");
             server.SendTo(guithongtin, remote);
             byte[] nhanthongtin = new byte[20];
-            lblKetqua.Text = Encoding.ASCII.GetString(nhanthongtin);
+            server.ReceiveFrom(nhanthongtin, ref remote);
+            lblKetqua.Visible = true;
+            lblKetqua.Text = Encoding.UTF8.GetString(nhanthongtin);               
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            KetNoiServer();
         }
     }
 }

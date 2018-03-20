@@ -10,32 +10,18 @@ namespace OanTuXi_Server
 {
     class Program
     {
-        public static string ipV4(string hostname)
-        {
-            IPHostEntry host;
-            host = Dns.GetHostEntry(hostname);
-
-            foreach (IPAddress ip in host.AddressList)
-            {
-                if (ip.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
-                {                  
-                    return ip.ToString();
-                }
-            }
-            return string.Empty;
-        }
-
+        
         static void Main(string[] args)
         {
             Socket newsock;
-            IPEndPoint ipep;
-            string hostname = Dns.GetHostName();           
-            string ip = ipV4(hostname);
+            IPEndPoint ipep;          
             byte[] data = new byte[1024];
-            newsock = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-            ipep = new IPEndPoint(IPAddress.Any, 9050);
+            IPAddress[] ipAddress = Dns.GetHostAddresses("localhost");        
+            newsock = new Socket(ipAddress[1].AddressFamily, SocketType.Dgram, ProtocolType.Udp);
+            ipep = new IPEndPoint(ipAddress[1], 9050);
             newsock.Bind(ipep);
             EndPoint ep = ipep;
+            Console.Write("IP = " + ipAddress[1]);
             Console.WriteLine("Server dang mo!");
            
             byte[] nhanthongtinclient = new byte[10];
@@ -47,17 +33,17 @@ namespace OanTuXi_Server
 
             if ((ketquangaunhien == 0 && ketquaclient == 0) || (ketquangaunhien == 1 && ketquaclient == 1) || (ketquangaunhien == 2 && ketquaclient == 2))
             {
-                byte[] guithongdiep = Encoding.ASCII.GetBytes("Hòa");
+                byte[] guithongdiep = Encoding.UTF8.GetBytes("Hòa");
                 newsock.SendTo(guithongdiep, ep);
             }
             else if ((ketquangaunhien == 0 && ketquaclient == 1) || (ketquangaunhien == 1 && ketquaclient == 2) || (ketquangaunhien == 2 && ketquaclient == 0))
             {
-                byte[] guithongdiep = Encoding.ASCII.GetBytes("Bạn thắng");
+                byte[] guithongdiep = Encoding.UTF8.GetBytes("Thắng");
                 newsock.SendTo(guithongdiep, ep);
             }
             else
             {
-                byte[] guithongdiep = Encoding.ASCII.GetBytes("Bạn thua !!");
+                byte[] guithongdiep = Encoding.UTF8.GetBytes("Thua");
                 newsock.SendTo(guithongdiep, ep);
             }
         }
