@@ -1,0 +1,10 @@
+C:\Users\Admin\Desktop\ThucHanhBuoi4\ClientKiemTra\bin\Debug\ClientKiemTra.exe.config
+C:\Users\Admin\Desktop\ThucHanhBuoi4\ClientKiemTra\bin\Debug\ClientKiemTra.exe
+C:\Users\Admin\Desktop\ThucHanhBuoi4\ClientKiemTra\bin\Debug\ClientKiemTra.pdb
+C:\Users\Admin\Desktop\ThucHanhBuoi4\ClientKiemTra\obj\Debug\ClientKiemTra.csprojResolveAssemblyReference.cache
+C:\Users\Admin\Desktop\ThucHanhBuoi4\ClientKiemTra\obj\Debug\ClientKiemTra.Form1.resources
+C:\Users\Admin\Desktop\ThucHanhBuoi4\ClientKiemTra\obj\Debug\ClientKiemTra.Properties.Resources.resources
+C:\Users\Admin\Desktop\ThucHanhBuoi4\ClientKiemTra\obj\Debug\ClientKiemTra.csproj.GenerateResource.cache
+C:\Users\Admin\Desktop\ThucHanhBuoi4\ClientKiemTra\obj\Debug\ClientKiemTra.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\ThucHanhBuoi4\ClientKiemTra\obj\Debug\ClientKiemTra.exe
+C:\Users\Admin\Desktop\ThucHanhBuoi4\ClientKiemTra\obj\Debug\ClientKiemTra.pdb
