@@ -1,0 +1,7 @@
+C:\Users\Admin\Desktop\Bai dang lam ---- cam xoa\ThucHanhBuoi6\MaTran-Server\bin\Debug\MaTran-Server.exe.config
+C:\Users\Admin\Desktop\Bai dang lam ---- cam xoa\ThucHanhBuoi6\MaTran-Server\bin\Debug\MaTran-Server.exe
+C:\Users\Admin\Desktop\Bai dang lam ---- cam xoa\ThucHanhBuoi6\MaTran-Server\bin\Debug\MaTran-Server.pdb
+C:\Users\Admin\Desktop\Bai dang lam ---- cam xoa\ThucHanhBuoi6\MaTran-Server\obj\Debug\MaTran-Server.csprojResolveAssemblyReference.cache
+C:\Users\Admin\Desktop\Bai dang lam ---- cam xoa\ThucHanhBuoi6\MaTran-Server\obj\Debug\MaTran-Server.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\Bai dang lam ---- cam xoa\ThucHanhBuoi6\MaTran-Server\obj\Debug\MaTran-Server.exe
+C:\Users\Admin\Desktop\Bai dang lam ---- cam xoa\ThucHanhBuoi6\MaTran-Server\obj\Debug\MaTran-Server.pdb
