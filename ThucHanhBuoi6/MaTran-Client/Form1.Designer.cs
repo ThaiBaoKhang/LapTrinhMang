@@ -44,7 +44,6 @@
             this.grbnhap2 = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
             this.grbketqua = new System.Windows.Forms.GroupBox();
-            this.txbTest = new System.Windows.Forms.TextBox();
             this.btnGiai = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chonsodong1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chonsocot1)).BeginInit();
@@ -253,13 +252,6 @@
             this.grbketqua.TabStop = false;
             this.grbketqua.Text = "Kết quả";
             // 
-            // txbTest
-            // 
-            this.txbTest.Location = new System.Drawing.Point(377, 291);
-            this.txbTest.Name = "txbTest";
-            this.txbTest.Size = new System.Drawing.Size(106, 20);
-            this.txbTest.TabIndex = 18;
-            // 
             // btnGiai
             // 
             this.btnGiai.Location = new System.Drawing.Point(190, 283);
@@ -276,7 +268,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(552, 470);
             this.Controls.Add(this.btnGiai);
-            this.Controls.Add(this.txbTest);
             this.Controls.Add(this.grbketqua);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.grbnhap2);
@@ -323,7 +314,6 @@
         private System.Windows.Forms.GroupBox grbnhap2;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox grbketqua;
-        private System.Windows.Forms.TextBox txbTest;
         private System.Windows.Forms.Button btnGiai;
     }
 }

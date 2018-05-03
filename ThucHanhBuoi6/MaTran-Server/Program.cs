@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -40,50 +41,144 @@ namespace MaTran_Server
     {
         TcpClient clientSocket;
         string clNo;
-        NetworkStream networkStream;
+        NetworkStream networkStream;       
 
-        int nhan;
+        int[,] mt1;
+        int[,] mt2;
+        int[,] mtkq;
+
         public void startClient(TcpClient inClientSocket, string clineNo)
         {
             this.clientSocket = inClientSocket;
             this.clNo = clineNo;
-            Thread ctThread = new Thread(doChat);
+            Thread ctThread = new Thread(giaimatran);
             ctThread.Start();
         }
-        private void doChat()
+
+        private void FromByteArray(byte[] input)
         {
-            bool run = true;
+            using (var stream = new MemoryStream(input))
+            using (var reader = new BinaryReader(stream, Encoding.UTF8))
+            {
+                var rows = reader.ReadInt32();
+                var column = reader.ReadInt32();
+                mt1 = new int[rows, column];
+                for (int i = 0; i < rows; i++)
+                {
+                    for (int j = 0; j < column; j++)
+                    {
+                        mt1[i, j] = reader.ReadInt32();                        
+                    }
+                }
+            }
+        }
+
+        private void FromByteArray2(byte[] input)
+        {
+            using (var stream = new MemoryStream(input))
+            using (var reader = new BinaryReader(stream, Encoding.UTF8))
+            {
+                var rows = reader.ReadInt32();
+                var column = reader.ReadInt32();
+                mt2 = new int[rows, column];
+                for (int i = 0; i < rows; i++)
+                {
+                    for (int j = 0; j < column; j++)
+                    {
+                        mt2[i, j] = reader.ReadInt32();
+                    }
+                }
+            }
+        }
+
+        private void Giai()
+        {
+            MaTran matran1 = new MaTran(mt1);
+            MaTran matran2 = new MaTran(mt2);
+            MaTran giaimatran = matran1 * matran2;
+            AddVaoKetQua(giaimatran);
+        }
+
+        private byte[] MatrixToBytes(int[,] matrix)
+        {
+            using (var stream = new MemoryStream())
+            using (var writer = new BinaryWriter(stream, Encoding.UTF8))
+            {
+                var rows = mtkq.GetLength(0);
+                var column = mtkq.GetLength(1);
+                writer.Write(rows);
+                writer.Write(column);
+                for (int i = 0; i < rows; i++)
+                {
+                    for (int j = 0; j < column; j++)
+                    {
+                        writer.Write(mtkq[i, j]);
+                    }
+                }
+                writer.Flush();
+                return stream.ToArray();
+            }
+        }
+
+        private void AddVaoKetQua(MaTran table)
+        {
+            mtkq = new int[table.Rows, table.Columns];
+            for (int i = 0; i < table.Rows; i++)
+            {               
+                for (int j = 0; j < table.Columns; j++)
+                {
+                    mtkq[i, j] = table[i, j];                   
+                }                
+            }
+        }
+
+        
+        private void giaimatran()
+        {            
             int requestCount = 0;
-            byte[] bytesFrom = new byte[1024];
-            string dataFromClient = null;
-            Byte[] sendBytes = null;
-            string serverResponse = null;
-            string rCount = null;
-            requestCount = 0;
+            byte[] bytesFrom = new byte[1024];   
+            byte[] sendBytes = null;                  
 
             while ((true))
             {
                 try
                 {
                     requestCount = requestCount + 1;                    
-                    networkStream = clientSocket.GetStream();
+                    networkStream = clientSocket.GetStream();                   
                     if (networkStream != null)
-                    {
-                        nhan = networkStream.Read(bytesFrom, 0, bytesFrom.Length);
-                        dataFromClient = Encoding.ASCII.GetString(bytesFrom);
-                        dataFromClient = dataFromClient.Substring(0, dataFromClient.IndexOf("$"));
-                        Console.WriteLine(" >> " + "client thu - " + clNo + " vua gui " + dataFromClient);
-                        rCount = Convert.ToString(requestCount);
-                        serverResponse = "Server to client(" + clNo + ") " + rCount;
-                        sendBytes = Encoding.ASCII.GetBytes(serverResponse);
-                        networkStream.Write(sendBytes, 0, sendBytes.Length);
-                        networkStream.Flush();                       
-                        Console.WriteLine(" >> " + serverResponse);
-                    }
-                    else
-                    {
-                        break;
-                    }
+                    {                       
+                        networkStream.Read(bytesFrom, 0, bytesFrom.Length);
+                        Console.WriteLine(" >> Client vua gui noi dung cua ma tran 1 ");                   
+                        FromByteArray(bytesFrom);
+                        networkStream.Flush();                        
+
+                        while ((true))
+                        {
+                            try
+                            {
+                                requestCount = requestCount + 1;
+                                networkStream = clientSocket.GetStream();
+                                if (networkStream != null)
+                                {
+                                    networkStream.Read(bytesFrom, 0, bytesFrom.Length);
+                                    Console.WriteLine(" >> Client vua gui noi dung cua ma tran 2 ");
+                                    FromByteArray2(bytesFrom);
+                                    networkStream.Flush();                                    
+                                    
+                                    Giai();                                    
+                                    sendBytes = MatrixToBytes(mtkq);                                                                
+                                    networkStream.Write(sendBytes, 0, sendBytes.Length);
+                                    networkStream.Flush();
+                                    Console.WriteLine(" >> Da gui ket qua den client do dai " + sendBytes.Length);
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+
+                            }
+                        }
+                       
+                    }                    
                 }
                 catch (Exception ex)
                 {                                    

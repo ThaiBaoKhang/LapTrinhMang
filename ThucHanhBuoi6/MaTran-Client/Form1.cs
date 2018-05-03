@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -20,10 +21,8 @@ namespace MaTran_Client
         int dem2 = 0;
         int[,] mt1;
         int[,] mt2;
+        int[,] ketqua;        
 
-        Socket server;
-        IPEndPoint ipe;
-        Thread ketnoi;
         TcpClient clientSocket = new TcpClient();
 
         public Form1()
@@ -67,6 +66,7 @@ namespace MaTran_Client
                 }
                 chonsodong1.Enabled = false;
                 chonsocot1.Enabled = false;
+                btnTaoMaTran1.Enabled = false;
             }
         }
 
@@ -106,6 +106,7 @@ namespace MaTran_Client
                 }
                 chonsodong2.Enabled = false;
                 chonsocot2.Enabled = false;
+                btnTaoMaTran2.Enabled = false;
             }
         }
         // luu mang
@@ -142,7 +143,92 @@ namespace MaTran_Client
                     }
                 }
             }          
-        }           
+        }
+
+        private byte[] Matrix1ToBytes(int[,] matrix1)
+        {
+            using (var stream = new MemoryStream())
+            using (var writer = new BinaryWriter(stream, Encoding.UTF8))
+            {
+                var rows = mt1.GetLength(0);
+                var column = mt1.GetLength(1);
+                writer.Write(rows);
+                writer.Write(column);
+                for (int i = 0; i < rows; i++)
+                {
+                    for (int j = 0; j < column; j++)
+                    {
+                        writer.Write(mt1[i, j]);
+                    }
+                }
+                writer.Flush();
+                return stream.ToArray();
+            }
+        }
+
+        private byte[] Matrix2ToBytes(int[,] matrix2)
+        {
+            using (var stream = new MemoryStream())
+            using (var writer = new BinaryWriter(stream, Encoding.UTF8))
+            {
+                var rows = mt2.GetLength(0);
+                var column = mt2.GetLength(1);
+                writer.Write(rows);
+                writer.Write(column);
+                for (int i = 0; i < rows; i++)
+                {
+                    for (int j = 0; j < column; j++)
+                    {
+                        writer.Write(mt2[i, j]);
+                    }
+                }
+                writer.Flush();
+                return stream.ToArray();
+            }
+        }
+
+        private void FromByteArray(byte[] input)
+        {
+            using (var stream = new MemoryStream(input))
+            using (var reader = new BinaryReader(stream, Encoding.UTF8))
+            {
+                var rows = reader.ReadInt32();
+                var column = reader.ReadInt32();            
+                ketqua = new int[rows,column];
+                for (int i = 0; i < rows; i++)
+                {
+                    for (int j = 0; j < column; j++)
+                    {
+                       ketqua[i,j] = reader.ReadInt32();
+                    }
+                }
+            }
+        }
+
+        private void matrankq()
+        {
+            int chieucaotxb = 20;
+            int chieudaitxb = 19;
+            int khoangcach = 10;
+            int a = 6;
+            int b = 19;
+            for (int y = 0; y < ketqua.GetLength(0); y++)
+            {
+                b = 19;
+                a = a + 10;
+                for (int x = 0; x < ketqua.GetLength(1); x++)
+                {
+                    TextBox txb = new TextBox();
+                    txb.Top = a + (y * chieucaotxb + khoangcach) + 5;
+                    txb.Left = b + (x * chieudaitxb + khoangcach) + 5;
+                    b = b + 10;
+                    txb.Text = ketqua[y,x].ToString();                   
+                    txb.Width = chieudaitxb;
+                    txb.Height = chieucaotxb;
+                    grbketqua.Controls.Add(txb);
+                }
+            }
+        }
 
         private void btnGiai_Click_1(object sender, EventArgs e)
         {
@@ -183,24 +269,26 @@ namespace MaTran_Client
             int columnmatrix2 = mt2.GetLength(1);
             try
             {
-                NetworkStream serverStream = clientSocket.GetStream();               
-                byte[] outStream = Encoding.ASCII.GetBytes("Ma tran 1 co " + rowsmatrix1 + " dong " + columnmatrix1 + " cot$");            
-                byte[] outStream2 = Encoding.ASCII.GetBytes("Ma tran 2 co " + rowsmatrix2 + " dong " + columnmatrix2 + " cot$");              
+                NetworkStream serverStream = clientSocket.GetStream();
+                byte[] outStream = Matrix1ToBytes(mt1);
                 serverStream.Write(outStream, 0, outStream.Length);
-                serverStream.Write(outStream2, 0, outStream.Length);             
+                serverStream.Flush();
+                byte[] outStream2 = Matrix2ToBytes(mt2);
+                serverStream.Write(outStream2, 0, outStream2.Length);
                 serverStream.Flush();
 
                 byte[] inStream = new byte[1024];
-                serverStream.Read(inStream, 0, inStream.Length);
-                string returndata = Encoding.ASCII.GetString(inStream);
-                txbTest.Text = "Data from Server : " + returndata;
+                serverStream.Read(inStream, 0, inStream.Length);               
+                serverStream.Flush();
+                FromByteArray(inStream);
             }
-            catch 
+            catch (Exception ex)
             {
-                MessageBox.Show("Kết nối đến server đã bị đóng! Thoát chương trình ");
+                MessageBox.Show("Kết nối đến server đã bị đóng! Thoát chương trình " + ex.Message);
                 this.Close();
             }
-            
+            matrankq();
+            btnGiai.Enabled = false;
         }
 
         private void Form1_Load(object sender, EventArgs e)
