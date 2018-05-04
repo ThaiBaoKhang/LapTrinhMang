@@ -134,21 +134,19 @@ namespace MaTran_Server
 
         
         private void giaimatran()
-        {            
-            int requestCount = 0;
+        {                        
             byte[] bytesFrom = new byte[1024];   
             byte[] sendBytes = null;                  
 
             while ((true))
             {
                 try
-                {
-                    requestCount = requestCount + 1;                    
+                {                                 
                     networkStream = clientSocket.GetStream();                   
                     if (networkStream != null)
                     {                       
                         networkStream.Read(bytesFrom, 0, bytesFrom.Length);
-                        Console.WriteLine(" >> Client vua gui noi dung cua ma tran 1 ");                   
+                        Console.WriteLine(" >> Client " + clNo + " vua gui noi dung cua ma tran 1 ");                   
                         FromByteArray(bytesFrom);
                         networkStream.Flush();                        
 
@@ -156,12 +154,11 @@ namespace MaTran_Server
                         {
                             try
                             {
-                                requestCount = requestCount + 1;
                                 networkStream = clientSocket.GetStream();
                                 if (networkStream != null)
                                 {
                                     networkStream.Read(bytesFrom, 0, bytesFrom.Length);
-                                    Console.WriteLine(" >> Client vua gui noi dung cua ma tran 2 ");
+                                    Console.WriteLine(" >> Client " + clNo + "  vua gui noi dung cua ma tran 2 ");
                                     FromByteArray2(bytesFrom);
                                     networkStream.Flush();                                    
                                     
@@ -169,10 +166,10 @@ namespace MaTran_Server
                                     sendBytes = MatrixToBytes(mtkq);                                                                
                                     networkStream.Write(sendBytes, 0, sendBytes.Length);
                                     networkStream.Flush();
-                                    Console.WriteLine(" >> Da gui ket qua den client do dai " + sendBytes.Length);
+                                    Console.WriteLine(" >> Da gui ket qua den client " + clNo + "");
                                 }
                             }
-                            catch (Exception ex)
+                            catch
                             {
 
                             }
@@ -180,9 +177,9 @@ namespace MaTran_Server
                        
                     }                    
                 }
-                catch (Exception ex)
-                {                                    
-
+                catch 
+                {
+                   
                 }
             }
             networkStream.Close();

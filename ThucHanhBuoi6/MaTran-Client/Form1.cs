@@ -61,6 +61,7 @@ namespace MaTran_Client
                         c++;
                         txb.Width = chieudaitxb;
                         txb.Height = chieucaotxb;
+                        txb.KeyPress += new KeyPressEventHandler(txbCamNhapChu);
                         grbnhap.Controls.Add(txb);                      
                     }
                 }
@@ -101,6 +102,7 @@ namespace MaTran_Client
                         c++;
                         txb.Width = chieudaitxb;
                         txb.Height = chieucaotxb;
+                        txb.KeyPress += new KeyPressEventHandler(txbCamNhapChu);
                         grbnhap2.Controls.Add(txb);
                     }
                 }
@@ -225,8 +227,17 @@ namespace MaTran_Client
                     txb.Text = ketqua[y,x].ToString();                   
                     txb.Width = chieudaitxb;
                     txb.Height = chieucaotxb;
+                    txb.ReadOnly = true;
                     grbketqua.Controls.Add(txb);
                 }
+            }
+        }
+
+        private void txbCamNhapChu(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
             }
         }
 
@@ -282,9 +293,9 @@ namespace MaTran_Client
                 serverStream.Flush();
                 FromByteArray(inStream);
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show("Kết nối đến server đã bị đóng! Thoát chương trình " + ex.Message);
+                MessageBox.Show("Kết nối đến server đã bị đóng! Thoát chương trình ");
                 this.Close();
             }
             matrankq();
